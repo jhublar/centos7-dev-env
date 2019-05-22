@@ -4,6 +4,12 @@
   - name: Create remote_tmp
     file: path="{{ HOME }}/.ansible/tmp" mode=0775 state=directory
 
+  - name: Ensure yum-utils is present.
+    become: true
+    yum:
+      name: yum-utils
+      state: latest
+
   - name: Remove bad repo(s)
     become: true
     shell: |

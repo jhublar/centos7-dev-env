@@ -22,7 +22,7 @@ db_dev_packages:
 py_dev_packages:
   - python-devel
   - python2-pip
-  - python3-devel
+  - python36-devel
 compression_dev_packages:
   - zlib-devel
   - bzip2-devel

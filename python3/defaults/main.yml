@@ -4,9 +4,9 @@
 iuscommunity_url: "https://{{ ansible_distribution|lower }}{{ ansible_distribution_major_version}}.iuscommunity.org/ius-release.rpm"
 py3_ver: '3.6'
 py3_packages:
-  - python36u
-  - python36u-pip
-  - python36u-devel
+  - python36
+  - python36-pip
+  - python36-devel
 py3_pip: '/usr/bin/pip3.6'
 py3_generic:
   - virtualenv

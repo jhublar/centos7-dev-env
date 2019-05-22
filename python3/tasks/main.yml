@@ -15,7 +15,7 @@
 - name: Remove python3 lib file
   become: true
   file:
-    path: /usr/local//usr/local/lib/libpython3.so
+    path: /usr/local/lib/libpython3.so
     state: absent
   when: install_python3 and not exists_result.stat
 
@@ -38,7 +38,7 @@
 
 - name: Update pip module
   become: true
-  pip: executable='{{ py3_pip }}' name='pip' state=latest
+  yum: name=python36-pip state=latest update_cache=yes
   when: install_python3
 
 - name: Install standard pip modules
