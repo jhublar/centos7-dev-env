@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
     config.vm.box_check_update = false
     config.vm.define "centos7-dev-env"
     config.vm.network "private_network", ip: "192.168.105.27"
-    config.vm.synced_folder ".", "/home/vagrant/sync" #, disabled: true
+    config.vm.synced_folder ".", "/vagrant" #, disabled: true
     config.vm.provision :shell, :inline => <<'EOF'
     config.vm.provision :shell, :path => "./prereqs.sh"
 if [ ! -f "/home/vagrant/.ssh/id_rsa" ]; then
@@ -38,6 +38,7 @@ EOF
     config.vm.provision :shell, inline: 'cat /vagrant/ans.pub >> /home/vagrant/.ssh/authorized_keys'
     config.vm.provision "ansible_local" do |ansible|
       ansible.verbose = "vv"
+      ansible.install_mode = "pip"
       ansible.playbook = "centos7-dev-env.yaml"
     end
     config.vm.provider 'vmware_fusion' do |vmw| #, override|
